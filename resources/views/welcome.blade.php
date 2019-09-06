@@ -115,14 +115,14 @@
             }
         });
         
-        fetch('http://localhost:8000/api/test1')
+        fetch('http://localhost:8000/api/opensignal/v_opensignal_national_monthly/tech/4G/date/201907')
         .then(function(response) {
             return response.json();
         })
         .then(function(myJson) {
             myJson.forEach(element => {
                 // console.log(element.Download_kbps);
-                addData(myChart, element.Operator,element.Download_kbps )
+                addData(myChart, element.Network_id,element.Download_kbps )
             });
             
         });
