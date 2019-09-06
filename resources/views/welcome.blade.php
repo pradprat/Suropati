@@ -65,10 +65,42 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
     </head>
     <body>
-        <canvas id="myChart" width="400" height="400"></canvas>
-
+        <canvas id="myChart" width="100" height="50"></canvas>
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+      <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
       <script>
+      var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	exportEnabled: true,
+	theme: "light1", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Simple Column Chart with Index Labels"
+	},
+	data: [{
+		type: "column", //change type to bar, line, area, pie, etc
+		//indexLabel: "{y}", //Shows y value on all Data Points
+		indexLabelFontColor: "#5A5757",
+		indexLabelPlacement: "outside",
+		dataPoints: [
+			{ x: 10, y: 71 },
+			{ x: 20, y: 55 },
+			{ x: 30, y: 50 },
+			{ x: 40, y: 65 },
+			{ x: 50, y: 92, indexLabel: "Highest" },
+			{ x: 60, y: 68 },
+			{ x: 70, y: 38 },
+			{ x: 80, y: 71 },
+			{ x: 90, y: 54 },
+			{ x: 100, y: 60 },
+			{ x: 110, y: 36 },
+			{ x: 120, y: 49 },
+			{ x: 130, y: 21, indexLabel: "Lowest" }
+		]
+	}]
+});
+chart.render();
+
         function addData(chart, label, data) {
             chart.data.labels.push(label);
             chart.data.datasets.forEach((dataset) => {
