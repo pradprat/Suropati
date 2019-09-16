@@ -17,3 +17,5 @@ Route::get('/', function () {
     // echo 'hello';
     return view('welcome');
 });
+
+Route::get('opensignal','C_Dashboard@index');
