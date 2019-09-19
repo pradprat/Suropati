@@ -120,9 +120,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>        </div>
+                    </div>        
+                </div>
             </div>
-        </div>        <div class="ui-theme-settings">
+        </div>        
+        <div class="ui-theme-settings">
             <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
                 <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
             </button>
@@ -431,7 +433,8 @@
                                 </span>
                             </button>
                         </span>
-                    </div>    <div class="scrollbar-sidebar">
+                    </div>   
+                    <div class="scrollbar-sidebar">
                         <div class="app-sidebar__inner">
                             <ul class="vertical-nav-menu">
                                 <li class="app-sidebar__heading">Dashboards</li>
@@ -639,46 +642,14 @@
                                     </div>
                                 </div>
                                 <div class="page-title-actions">
-                                    <div class="d-inline-block dropdown">
-                                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-danger">
-                                            Select Month
-                                        </button>
-                                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    <a href="javascript:void(0);" class="nav-link">
-                                                        <i class="nav-link-icon lnr-inbox"></i>
-                                                        <span>
-                                                            201908
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="javascript:void(0);" class="nav-link">
-                                                        <i class="nav-link-icon lnr-book"></i>
-                                                        <span>
-                                                            201907
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="javascript:void(0);" class="nav-link">
-                                                        <i class="nav-link-icon lnr-picture"></i>
-                                                        <span>
-                                                            201906
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a disabled href="javascript:void(0);" class="nav-link disabled">
-                                                        <i class="nav-link-icon lnr-file-empty"></i>
-                                                        <span>
-                                                            201901
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="date">Month</label>
+                                        <select class="form-control" id="date">
+                                            <option value="201908">201908</option>
+                                            <option value="201907">201907</option>
+                                            <option value="201906">201906</option>
+                                            <option value="201901">201901</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -698,7 +669,7 @@
                                                 <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
                                                     <div class="widget-chat-wrapper-outer">
                                                         <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
-                                                            <canvas id="3gdownload"></canvas>
+                                                            <canvas class="opensignal" id="3gdownload"></canvas>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -721,7 +692,7 @@
                                                 <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
                                                     <div class="widget-chat-wrapper-outer">
                                                         <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
-                                                            <canvas id="3gupload"></canvas>
+                                                            <canvas class="opensignal1" id="3gupload"></canvas>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -746,7 +717,7 @@
                                                 <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
                                                     <div class="widget-chat-wrapper-outer">
                                                         <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
-                                                            <canvas id="4gdownload"></canvas>
+                                                            <canvas class="opensignal2" id="4gdownload"></canvas>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -769,7 +740,7 @@
                                                 <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
                                                     <div class="widget-chat-wrapper-outer">
                                                         <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
-                                                            <canvas id="4gupload"></canvas>
+                                                            <canvas class="opensignal3" id="4gupload"></canvas>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -781,20 +752,20 @@
                         </div>
     <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/Chart.min.js') }}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script>
         function addData(chart, label, data) {
             chart.data.labels.push(label);
             chart.data.datasets.forEach((dataset) => {
                 dataset.data.push(data);
             });
+
             chart.update();
         }
 
-        var data;
-
         // 3G Download
-        var ctx1 = document.getElementById('3gdownload');
-        var myChart3gdownload = new Chart(ctx1, {
+        var ctx = document.getElementById('3gdownload');
+        var myChart3gdownload = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: [],
@@ -819,6 +790,9 @@
                 }]
             },
             options: {
+                legend: {
+                    display: false
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -829,7 +803,7 @@
             }
         });
 
-        fetch('http://localhost:8000/api/opensignal/nationwide/tech/3G/date/201907')
+        fetch('http://localhost:8000/api/opensignal/nationwide/tech/3G/date/201908')
             .then(function(response) {
                 return response.json();
             })
@@ -840,8 +814,8 @@
             });
 
          //3G Upload
-         var ctx2 = document.getElementById('3gupload');
-        var myChart3gupload = new Chart(ctx2, {
+        var ctx = document.getElementById('3gupload');
+        var myChart3gupload = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: [],
@@ -866,6 +840,9 @@
                 }]
             },
             options: {
+                legend: {
+                    display: false
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -876,7 +853,7 @@
             }
         });
 
-        fetch('http://localhost:8000/api/opensignal/nationwide/tech/3G/date/201907')
+        fetch('http://localhost:8000/api/opensignal/nationwide/tech/3G/date/201908')
             .then(function(response) {
                 return response.json();
             })
@@ -887,8 +864,8 @@
             });
 
         //4G Download
-        var ctx3 = document.getElementById('4gdownload');
-        var myChart4gdownload = new Chart(ctx3, {
+        var ctx = document.getElementById('4gdownload');
+        var myChart4gdownload = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: [],
@@ -913,6 +890,9 @@
                 }]
             },
             options: {
+                legend: {
+                    display: false
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -923,7 +903,7 @@
             }
         });
 
-        fetch('http://localhost:8000/api/opensignal/nationwide/tech/4G/date/201907')
+        fetch('http://localhost:8000/api/opensignal/nationwide/tech/4G/date/201908')
             .then(function(response) {
                 return response.json();
             })
@@ -934,8 +914,8 @@
             });
         
         //4G Upload
-        var ctx4 = document.getElementById('4gupload');
-        var myChart4gupload = new Chart(ctx4, {
+        var ctx = document.getElementById('4gupload');
+        var myChart4gupload = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: [],
@@ -960,6 +940,9 @@
                 }]
             },
             options: {
+                legend: {
+                    display: false
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -970,7 +953,7 @@
             }
         });
 
-        fetch('http://localhost:8000/api/opensignal/nationwide/tech/4G/date/201907')
+        fetch('http://localhost:8000/api/opensignal/nationwide/tech/4G/date/201908')
             .then(function(response) {
                 return response.json();
             })
@@ -979,14 +962,59 @@
                     addData(myChart4gupload, element.Network_id, element.Upload_kbps);
                 });
             });
-        
-        function removeData(chart) {
-            chart.data.labels.pop();
-            chart.data.datasets.forEach((dataset) => {
-                dataset.data.pop();
-            });
-            chart.update();
-        }
+
+        // $('#date').change(function(chart) {
+        //     var value = $(this).val();
+        //     if(value==201907) {
+        //         myChart3gdownload = new Chart(ctx1, {
+        //             type: 'bar',
+        //             data: {
+        //                 labels: [],
+        //                 datasets: [{
+        //                     label: '',
+        //                     data: [],
+        //                     backgroundColor: [
+        //                         'rgba(0, 255, 0, 1)',
+        //                         'rgba(255, 255, 0, 1)',
+        //                         'rgba(192, 192, 192, 1)',
+        //                         'rgba(255, 0, 0, 1)',
+        //                         'rgba(54, 162, 235, 1)'
+        //                     ],
+        //                     borderColor: [
+        //                         'rgba(0, 255, 0, 1)',
+        //                         'rgba(255, 255, 0, 1)',
+        //                         'rgba(192, 192, 192, 1)',
+        //                         'rgba(255, 0, 0, 1)',
+        //                         'rgba(54, 162, 235, 1)'
+        //                     ],
+        //                     borderWidth: 1
+        //                 }]
+        //             },
+        //             options: {
+        //                 legend: {
+        //                     display: false
+        //                 },
+        //                 scales: {
+        //                     yAxes: [{
+        //                         ticks: {
+        //                             beginAtZero: true
+        //                         }
+        //                     }]
+        //                 }
+        //             }
+        //         });
+
+        //         fetch('http://localhost:8000/api/opensignal/nationwide/tech/3G/date/201907')
+        //             .then(function(response) {
+        //                 return response.json();
+        //             })
+        //             .then(function(myJson) {
+        //                 myJson.forEach(element => {
+        //                     addData(myChart3gdownload, element.Network_id, element.Download_kbps);
+        //                 });
+        //             });
+        //             }
+        //         });
     </script>
 </body>
 </html>

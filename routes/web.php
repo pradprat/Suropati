@@ -18,4 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('opensignal','C_Dashboard@osignal');
+Route::get('welcome','C_Dashboard@login');
+Route::get('loginPost','C_Dashboard@loginPost');
 Route::get('opensignal','C_Dashboard@index');
