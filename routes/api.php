@@ -44,11 +44,11 @@ Route::get('/opensignal/nationwide/tech/{tech}/date/{date}', function ($tech,$da
 // http://localhost:8000/api/opensignal/area/JABOTABEK%20&%20JABAR/tech/{tech}/date/{date}
 // http://localhost:8000/api/opensignal/area/PAMASUKA/tech/{tech}/date/{date}
 // http://localhost:8000/api/opensignal/area/J/tech/{tech}/date/{date}
-Route::get('/opensignal/area/{area}/tech/{tech}/date/{date}', function ($area,$tech,$date) {
+Route::get('/opensignal/area/tech/{tech}/date/{date}', function ($tech,$date) {
     $res_array = DB::select('
     SELECT *
     FROM [Dashboard_Data_temp].[dbo].[v_opensignal_area_monthly]
-    where AREA = \''.$area.'\' and Tech = \''.$tech.'\' and DATE = \''.$date.'\''
+    where Tech = \''.$tech.'\' and DATE = \''.$date.'\''
     );
     return json_encode($res_array);
 });
