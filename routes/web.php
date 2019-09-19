@@ -15,7 +15,7 @@ Route::get('/', function () {
     // print_r(json_decode($json));
     // menampilkan hasil curl
     // echo 'hello';
-    return view('welcome');
+    return view('login');
 });
 
 Route::get('opensignal','C_Dashboard@osignal');
