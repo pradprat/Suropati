@@ -73,7 +73,7 @@
 						</button>
 					</div>
 					
-					<div class="text-center p-t-46 p-b-20">
+					<!-- <div class="text-center p-t-46 p-b-20">
 						<span class="txt2">
 							or sign up using
 						</span>
@@ -87,10 +87,10 @@
 						<a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
 							<i class="fa fa-twitter" aria-hidden="true"></i>
 						</a>
-					</div>
+					</div> -->
 				</form>
 
-				<div class="login100-more" style="background-image: url('images/bg-01.jpg');">
+				<div class="login100-more" style="background-image: url('images/bg-suropati.jpeg');">
 				</div>
 			</div>
 		</div>
