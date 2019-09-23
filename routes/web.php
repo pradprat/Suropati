@@ -18,8 +18,8 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/login','C_Login@login_page');
-Route::post('/login_form','C_Login@osignal');
+Route::get('login','C_Login@login_page');
+Route::post('login','C_Login@proses');
 
 
 Route::get('opensignal','C_Dashboard@osignal');
