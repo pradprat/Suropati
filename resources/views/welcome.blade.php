@@ -93,7 +93,7 @@
                 <input type="password" class="form-control" name="pwd">
             </div>
             <div class="form-group">
-                <button type="submit" name="Login" class="btn btn-md btn-danger form-control" style="width: 100%"" href="/loginpost";>Login</button>
+                <button type="submit" name="Login" class="btn btn-md btn-danger form-control" style="width: 100%" href="/loginpost";>Login</button>
             </div>
         </form>
     </div>
