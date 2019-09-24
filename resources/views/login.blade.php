@@ -28,7 +28,9 @@
 <!--===============================================================================================-->
 </head>
 <body style="background-color: #666666;">
-	
+@if($errors->any())
+<h4>{{$errors->first()}}</h4>
+@endif
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -40,7 +42,7 @@
 					
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email">
+						<input class="input100" type="text" name="username">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Email</span>
 					</div>
