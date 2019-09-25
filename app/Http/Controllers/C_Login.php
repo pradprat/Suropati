@@ -27,15 +27,21 @@ class C_Login extends Controller
 
         try{
                 $res = curl_exec($ch);
-                
+                $response_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
+                $http_respond = trim( strip_tags( $res ) );
+                echo($response_code);
+
+                if ($response_code==200) {
+                    //fill  the session
+                    return redirect('/login');
+                }else{
+                    //error message
+                    return \Redirect::back()->withErrors(['msg', 'The Message']);
+                }
+
                 curl_close($ch);
-                // Session::put('username',$user);
-                // return redirect('menu');
-                return redirect('/login');
-
-
         } catch(Exception $e){
-            return \Redirect::back()->withErrors(['msg', 'The Message']);
+            // return \Redirect::back()->withErrors(['msg', 'The Message']);
 
             // echo "eh kok gaada";//wtf
         }
