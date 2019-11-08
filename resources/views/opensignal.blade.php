@@ -401,8 +401,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>        <div class="app-main">
+            </div> -->
+        </div>        
+        <div class="app-main">
                 <div class="app-sidebar sidebar-shadow">
                     <div class="app-header__logo">
                         <div class="logo-src"></div>
@@ -963,58 +964,58 @@
                 });
             });
 
-        // $('#date').change(function(chart) {
-        //     var value = $(this).val();
-        //     if(value==201907) {
-        //         myChart3gdownload = new Chart(ctx1, {
-        //             type: 'bar',
-        //             data: {
-        //                 labels: [],
-        //                 datasets: [{
-        //                     label: '',
-        //                     data: [],
-        //                     backgroundColor: [
-        //                         'rgba(0, 255, 0, 1)',
-        //                         'rgba(255, 255, 0, 1)',
-        //                         'rgba(192, 192, 192, 1)',
-        //                         'rgba(255, 0, 0, 1)',
-        //                         'rgba(54, 162, 235, 1)'
-        //                     ],
-        //                     borderColor: [
-        //                         'rgba(0, 255, 0, 1)',
-        //                         'rgba(255, 255, 0, 1)',
-        //                         'rgba(192, 192, 192, 1)',
-        //                         'rgba(255, 0, 0, 1)',
-        //                         'rgba(54, 162, 235, 1)'
-        //                     ],
-        //                     borderWidth: 1
-        //                 }]
-        //             },
-        //             options: {
-        //                 legend: {
-        //                     display: false
-        //                 },
-        //                 scales: {
-        //                     yAxes: [{
-        //                         ticks: {
-        //                             beginAtZero: true
-        //                         }
-        //                     }]
-        //                 }
-        //             }
-        //         });
+        $('#date').change(function() {
+            var value = $(this).val();
+            if(value==201907) {
+                myChart3gdownload = new Chart(ctx1, {
+                    type: 'bar',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            label: '',
+                            data: [],
+                            backgroundColor: [
+                                'rgba(0, 255, 0, 1)',
+                                'rgba(255, 255, 0, 1)',
+                                'rgba(192, 192, 192, 1)',
+                                'rgba(255, 0, 0, 1)',
+                                'rgba(54, 162, 235, 1)'
+                            ],
+                            borderColor: [
+                                'rgba(0, 255, 0, 1)',
+                                'rgba(255, 255, 0, 1)',
+                                'rgba(192, 192, 192, 1)',
+                                'rgba(255, 0, 0, 1)',
+                                'rgba(54, 162, 235, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            display: false
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
 
-        //         fetch('http://localhost:8000/api/opensignal/nationwide/tech/3G/date/201907')
-        //             .then(function(response) {
-        //                 return response.json();
-        //             })
-        //             .then(function(myJson) {
-        //                 myJson.forEach(element => {
-        //                     addData(myChart3gdownload, element.Network_id, element.Download_kbps);
-        //                 });
-        //             });
-        //             }
-        //         });
+                fetch('http://localhost:8000/api/opensignal/nationwide/tech/3G/date/201907')
+                    .then(function(response) {
+                        return response.json();
+                    })
+                    .then(function(myJson) {
+                        myJson.forEach(element => {
+                            addData(myChart3gdownload, element.Network_id, element.Download_kbps);
+                        });
+                    });
+                    }
+                });
     </script>
 </body>
 </html>

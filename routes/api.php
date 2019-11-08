@@ -28,14 +28,35 @@ where Tech=\'4G\'  and DATE=\'201907\'
 });
 
 
+// API Ookla Area
+Route::get('/ookla/area/{area}/network/{network}/date/{date}', function ($area,$network,$yearmonth) {
+    $res_array = DB::select('
+    SELECT *
+    FROM [Dashboard_Data_temp].[dbo].[v_ookla_area_monthly]
+    where AREA = \''.$area.'\' and network = \''.$network.'\' and yearmonth = \''.$yearmonth.'\''
+    );
+    return json_encode($res_array);
+});
+
+// API Ookla Region
+Route::get('/ookla/region/{REGION}/network/{network}/date/{date}', function ($region,$network,$yearmonth) {
+    $res_array = DB::select('
+    SELECT *
+    FROM [Dashboard_Data_temp].[dbo].[v_ookla_region_monthly]
+    where REGION = \''.$region.'\' and network = \''.$network.'\' and yearmonth = \''.$yearmonth.'\''
+    );
+    return json_encode($res_array);
+});
+
 // http://localhost:8000/api/opensignal/nationwide/tech/4G/date/201907
 // http://localhost:8000/api/opensignal/nationwide/tech/3G/date/201907
-Route::get('/opensignal/nationwide/tech/{tech}/date/{date}', function ($tech,$date) {
+
+Route::get('/opensignal/nationwide/tech/{tech}/date/{date}', function($tech,$date){
     $res_array = DB::select('
         SELECT *
         FROM [Dashboard_Data_temp].[dbo].[v_opensignal_national_monthly]
-        where Tech=\''.$tech.'\'  and DATE=\''.$date.'\'
-    ');
+        WHERE Tech = \''.$tech.'\' and DATE = \''.$date.'\''
+    );
     return json_encode($res_array);
 });
 

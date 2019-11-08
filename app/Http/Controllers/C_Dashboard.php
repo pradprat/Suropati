@@ -9,15 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class C_Dashboard extends Controller
 {
-    public function osignal()
-    {
-        return view('opensignal');
-    }
-
     public function index(){
-    	 if(!Session::get('username')){
-            // if(false){
-            return redirect('welcome');
+    	//  if(!Session::get('username')){
+            if(false){
+            return redirect('homepage');
         }
         else{
             return view('opensignal');
@@ -54,5 +49,57 @@ class C_Dashboard extends Controller
 			echo "eh kok gaada";//wtf
 		}
 		
-	}
+    }
+    
+    public function ookla_area_monthly_3g(){
+        return view('ookla_area_monthly_3g');
+    }
+
+    public function ookla_area_monthly_4g(){
+        return view('ookla_area_monthly_4g');
+    }
+
+    public function ookla_national_monthly_3g(){
+        return view('ookla_national_monthly_3g');
+    }
+
+    public function ookla_national_monthly_4g(){
+        return view('ookla_national_monthly_4g');
+    }
+
+    public function ookla_region_monthly_3g(){
+        return view('ookla_region_monthly_3g');
+    }
+
+    public function ookla_region_monthly_4g(){
+        return view('ookla_region_monthly_4g');
+    }
+
+    public function opensignal_area_monthly_3g(){
+        return view('opensignal_area_monthly_3g');
+    }
+
+    public function opensignal_area_monthly_4g(){
+        return view('opensignal_area_monthly_4g');
+    }
+
+    public function opensignal_national_monthly_3g(){
+        return view('opensignal_national_monthly_3g');
+    }
+
+    public function opensignal_national_monthly_4g(){
+        return view('opensignal_national_monthly_4g');
+    }
+
+    public function opensignal_region_monthly_3g(){
+        return view('opensignal_region_monthly_3g');
+    }
+
+    public function opensignal_region_monthly_4g(){
+        return view('opensignal_region_monthly_4g');
+    }
+
+    public function homepage(){
+        return view('homepage');
+    }
 }
